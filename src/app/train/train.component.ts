@@ -3,6 +3,14 @@ import { HerokuService } from '../servicios/heroku.service';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import Swal from 'sweetalert2'
 
+export interface TrainResults {
+  topic: string;
+  precision: number;
+  recall: number;
+  f1_score: number;
+  support: number;
+}
+
 @Component({
   selector: 'app-train',
   templateUrl: './train.component.html',
@@ -12,6 +20,10 @@ export class TrainComponent implements OnInit {
 
   formModelo : FormGroup
   topicoString = ""
+  allData = []
+  displayedColumns: string[] = ['topic', 'precision', 'recall', 'f1_score', 'support'];
+  ELEMENT_DATA: TrainResults[] = [];
+  dataSource
 
   constructor(private service: HerokuService) { 
     this.formModelo = new FormGroup({
@@ -31,16 +43,31 @@ export class TrainComponent implements OnInit {
       allowEnterKey: false,
       allowEscapeKey: false,
       allowOutsideClick: false,
+      showConfirmButton: false,
+      showCancelButton: false
     })
-    this.formModelo.value.topics.value = this.topicoString.split(",")
+    this.formModelo.value.topics = this.topicoString.split(",")
     this.service.postTrain(this.formModelo.value).subscribe(
       res => {
+        console.log("OK!!!!!!!!!!!!!")
         Swal.close()
+        this.allData = []
+        for(let key in res) {
+          let tr = {topic: key,
+            precision: res[key][0],
+            recall: res[key][1],
+            f1_score: res[key][2],
+            support: res[key][3]}
+
+          this.ELEMENT_DATA.push(tr)
+          this.dataSource = this.ELEMENT_DATA
+        }
         Swal.fire({
           icon: 'success',
           title: 'Modelo Entrenado... ',
           text: 'No olvides probarlo usando el mismo modelo...'
         })
+
       },
       err => {
         Swal.close()

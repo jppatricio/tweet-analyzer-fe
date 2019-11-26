@@ -1,7 +1,8 @@
 <div class="row">
   <div class="col-md-2">
-    <div  class="card-container">
-      <div class='wrapper' (click)="train = true; predict = false; currentTitle= 'ENTRENA AL MODELO'" (mousemove)='onMouseMove($event)' (mouseleave)='onMouseLeave($event)'>
+    <div class="card-container">
+      <div class='wrapper' (click)="train = true; predict = false; currentTitle= 'ENTRENA AL MODELO'"
+        (mousemove)='onMouseMove($event)' (mouseleave)='onMouseLeave($event)'>
         <div class="card" #card>
           <div class="card-content">
             <p class="info">ENTRENAR AL MODELO</p>
@@ -9,8 +10,9 @@
         </div>
       </div>
     </div>
-    <div  class="card-container">
-      <div class='wrapper' (click)="predict = true; train = false; currentTitle= 'ETIQUETA UN TWEET'" (mousemove)='onMouseMove2($event)' (mouseleave)='onMouseLeave($event)'>
+    <div class="card-container">
+      <div class='wrapper' (click)="predict = true; train = false; currentTitle= 'ETIQUETA UN TWEET'"
+        (mousemove)='onMouseMove2($event)' (mouseleave)='onMouseLeave($event)'>
         <div class="card" #card2>
           <div class="card-content">
             <p class="info">ETIQUETAR TWEET</p>
@@ -18,8 +20,9 @@
         </div>
       </div>
     </div>
-    <div  class="card-container">
-      <div class='wrapper' (click)="opengit(); predict = false; train = false; currentTitle = 'INFORMACIÓN'" (mousemove)='onMouseMove3($event)' (mouseleave)='onMouseLeave($event)'>
+    <div class="card-container">
+      <div class='wrapper' (click)="opengit(); predict = false; train = false; currentTitle = 'INFORMACIÓN'"
+        (mousemove)='onMouseMove3($event)' (mouseleave)='onMouseLeave($event)'>
         <div class="card" #card3>
           <div class="card-content">
             <p class="info">GITHUB</p>
@@ -29,10 +32,56 @@
     </div>
   </div>
   <div class="col-md-10 info-row">
-    <div style="height: 100%; vertical-align: middle;">
+    <div style="height: 100%; vertical-align: middle;
+    overflow-y: scroll;">
       <span class="title">{{currentTitle}}</span>
       <app-train *ngIf=train></app-train>
       <app-tweet *ngIf=predict></app-tweet>
+      <div *ngIf="!predict && !train">
+        <span class="subtitle">Pasos para empezar</span>
+        <ol>
+          <li>Haz click en "Entrenar al Modelo"</li>
+          <li>Ingresa un modelo a utilizar (Compliment Naive Bayes es el mejor)</li>
+          <li>Si quieres personalizar los tópicos a predecir, ingrésalos separados por comas, sin faltas de ortografía y
+            sin espacios.
+            <br><span class="cleartext"> EJ: Comida,Deportes,Ocio,Videojuegos</span>
+          </li>
+          <li>Ingresa la contraseña (Para evitar requests indeseados)</li>
+          <li>Haz click en [Entrenar] y espera a ver los resultados del entrenamiento</li>
+          <li>Una vez entrenado, podrás empezar a utilizar la prediccion de etiquetas</li>
+          <li>Haz click en "Etiquetar Tweet"</li>
+          <li>Ingresa el modelo elegido al momento de entrenar...</li>
+          <li>Ingresa la contraseña</li>
+          <li>Ingresa el tweet a etiquetar</li>
+          <li>Haz click en [Etiquetar] y espera la respuesta</li>
+          <li>Puedes hacer tantas predicciones como quieras</li>
+        </ol>
+
+        <span class="subtitle">Errores conocidos</span>
+        <ol>
+          <li>Si al momento de entrenar, el servicio no responde... Es posible que hayas ingresado muchos tópicos, un
+            valor incorrecto o simplemente exista una mala conexión al servidor.</li>
+          <li>Si entrenas con un modelo y predices con otro, los resultados van a ser o incorrectos o ni siquiera va a
+            correr la petición en el servidor</li>
+          <li>Puede que algunos tweets regresen error al momento de predecir... Esto puede ser a causa de:
+            <br><span class="cleartext">
+              <ul>
+                <li>Ingresaste una palabra no indexada al momento de entrenar (No tiene su espacio en el vector de
+                  frecuencias)</li>
+                <li>Escribiste mal una palabra</li>
+                <li>Encontraste un bug... :(</li>
+              </ul>
+            </span>
+          </li>
+          <li>Cualquier error o duda dejo mi contacto</li>
+          <br><span class="cleartext">
+            <ul>
+              <li>jppatricio96@gmail.com</li>
+              <li>github - jppatricio</li>
+            </ul>
+          </span>
+        </ol>
+      </div>
     </div>
   </div>
 </div>

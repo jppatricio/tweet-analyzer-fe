@@ -1,1 +1,23 @@
-<p>tweet works!</p>
+<div class="container">
+    <form [formGroup]="formModelo" >
+      <div class="form-group">
+        <label for="model">Modelo</label>
+        <select formControlName="model" class="browser-default custom-select" #model>
+            <option selected value="1">GaussianNB</option>
+            <option value="2">MultinomialNB</option>
+            <option value="3">BernoulliNB</option>
+            <option value="4">ComplementNB</option>
+          </select>
+        </div>
+      <div class="form-group">
+        <label for="password">Contraseña:</label>
+        <input type="password" formControlName="password" class="form-control" id="password" placeholder="Ingresa contraseña" name="password" #password>
+      </div>
+
+      <div class="form-group">
+        <label for="tweet">Agrega tu Tweet:</label>
+        <input type="tweet" formControlName="tweet" class="form-control" id="tweet" placeholder="Ingresa tweet" name="tweet" #tweet>
+      </div>
+      <button (click)="enviarModelo()" class="btn btn-success">Etiquetar</button>
+    </form>
+  </div>

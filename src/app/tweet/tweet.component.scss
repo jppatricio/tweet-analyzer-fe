@@ -1,0 +1,24 @@
+.custom-select{
+    color: black;
+}
+
+.container {
+    max-height: 90%;
+    overflow: auto;
+  }
+  
+  table {
+    margin-top: 25px;
+    width: 100%;
+  }
+
+  .title{
+    text-align: center;
+    display: block;
+    font-style: normal;
+    font-weight: lighter;
+    color:#e1e8ed;
+    text-shadow: 2px 2px rgb(0, 0, 0);
+    font-size: 4rem;
+    border-bottom: 1px solid #e1e8ed;
+}
