@@ -29,7 +29,7 @@ export class TrainComponent implements OnInit {
     this.formModelo = new FormGroup({
       model: new FormControl(0, [Validators.required]),
       testSize: new FormControl('', [Validators.required, Validators.min(0.1), Validators.max(0.90)]),
-      topics: new FormControl(Array<String>(), [Validators.required]),
+      topics: new FormControl([], [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.max(20)]),
 
     });
@@ -46,7 +46,9 @@ export class TrainComponent implements OnInit {
       showConfirmButton: false,
       showCancelButton: false
     })
-    this.formModelo.value.topics = this.topicoString.split(",")
+    if(this.topicoString.length != 0)
+      this.formModelo.value.topics = this.topicoString.split(",")
+    
     this.service.postTrain(this.formModelo.value).subscribe(
       res => {
         console.log("OK!!!!!!!!!!!!!")
