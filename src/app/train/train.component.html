@@ -1,0 +1,26 @@
+<div class="container">
+    <form [formGroup]="formModelo" >
+      <div class="form-group">
+        <label for="email">Modelo</label>
+        <select formControlName="model" class="browser-default custom-select" #model>
+            <option selected value="1">GaussianNB</option>
+            <option value="2">MultinomialNB</option>
+            <option value="3">BernoulliNB</option>
+            <option value="4">ComplementNB</option>
+          </select>
+        </div>
+        <div class="form-group">
+            <label for="pwd">Tamaño conjunto de prueba (0.1 - 0.9):</label>
+            <input type="number" formControlName="testSize" class="form-control" id="testSize" placeholder="0.1 - 0.9" name="testSize" #testSize min="0.1" max="0.9" step="0.05">
+          </div>
+          <div class="form-group">
+            <label for="pwd">Topicos MAX 10 (separados por comas a,b,c):</label>
+            <input type="text" class="form-control" [(ngModel)]="topicoString" [ngModelOptions]="{standalone: true}" placeholder="vacío para usar el dataset precargado...">
+          </div>
+      <div class="form-group">
+        <label for="pwd">Contraseña:</label>
+        <input type="password" formControlName="password" class="form-control" id="password" placeholder="Ingresa contraseña" name="password" #password>
+      </div>
+      <button (click)="enviarModelo()" class="btn btn-success">Entrenar</button>
+    </form>
+  </div>

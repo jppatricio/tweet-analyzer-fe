@@ -1,0 +1,84 @@
+.row{
+    margin: 0px;
+    height: 100vh;
+    width: 100%;
+    padding: 30px;
+    background-color: #1da1f2;
+}
+.info-row{
+    border-radius: 10px;
+    height: 100%;
+    vertical-align: middle;
+    background-color: #2d809c;
+    padding: 25px;
+    color: white;
+}
+.title{
+    text-align: center;
+    display: block;
+    font-style: normal;
+    font-weight: lighter;
+    color:#e1e8ed;
+    text-shadow: 2px 2px rgb(0, 0, 0);
+    font-size: 4rem;
+    border-bottom: 1px solid #e1e8ed;
+}
+.card-container{
+    width: 100%;
+    height: 300px;
+    margin: 5px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.wrapper {
+    background: #2d809c;
+    -webkit-perspective: 500px;
+            perspective: 500px;
+    display: flex;
+    height: 100%;
+    
+    border-radius: 10px;
+}
+
+.card {
+    background-image: url("../favicon.ico");
+    background-size:     cover;
+    background-repeat:   no-repeat;
+    background-position: center center;
+            padding: 30px;
+    border-radius: 10px;
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+}
+
+.card:after {
+    content: " ";
+    position: absolute;
+    width: 100%;
+    height: 10px;
+    border-radius: 70%;
+    left: 0;
+    bottom: -50px;
+}
+
+.card-content {
+    margin: auto;
+    text-align: center;
+    bottom: 20px;
+    position: absolute;
+}
+
+.info {
+    text-align: center;
+    display: block;
+    -webkit-transform: translateZ(60px);
+            transform: translateZ(60px);
+    font-style: normal;
+    font-weight: lighter;
+    color:white;
+    text-shadow: 2px 2px rgb(0, 0, 0);
+}
