@@ -1,5 +1,7 @@
 # TweetAnalyzer
 
+Proyecto deployado en Heroku: https://tweet-analyzer-fe.herokuapp.com/
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.2.
 
 Para conocer más sobre el algoritmo en el backend, la repo esta aquí [tweet-analyzer-be](https://github.com/jppatricio/tweet-analyzer-be)
